@@ -396,6 +396,12 @@
         }];
     }
 }
+
+#pragma mark - setter
+-(void)setSpecialLicenseplateHidden:(BOOL)specialLicenseplateHidden{
+    self.customerBtn.hidden = specialLicenseplateHidden;
+}
+
 #pragma mark - Animation
 -(void)showSelf{
     [UIView animateWithDuration:.5 animations:^{
@@ -455,6 +461,9 @@
     [self resetResultUI];
 }
 -(void)cancelAction{
+    if([self.delegate respondsToSelector:@selector(licenseplate_cancel)]){
+        [self.delegate licenseplate_cancel];
+    }
     [self dismissSelf];
 }
 -(void)resultAction:(UIButton*)sender{

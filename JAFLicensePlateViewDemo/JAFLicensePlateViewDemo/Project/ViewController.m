@@ -26,13 +26,19 @@
 - (IBAction)editCarLicensePlate:(UIButton *)sender {
     JAFLicensePlateView* licenseplate = [JAFLicensePlateView licensePlateDefaultNumber:self.displayTF.text];
     licenseplate.delegate = self;
+    licenseplate.specialLicenseplateHidden = YES;
     [licenseplate showLicenseplate];
 }
 
 #pragma mark - JAFLicensePlateViewDelegate
 
 -(void)licenseplate_finishBackString:(NSString *)licenseplate{
+    NSLog(@"call back:%@",licenseplate);
     self.displayTF.text = licenseplate;
+}
+
+-(void)licenseplate_cancel{
+    NSLog(@"licenseplate close");
 }
 
 @end
